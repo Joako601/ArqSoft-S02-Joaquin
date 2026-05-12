@@ -4,15 +4,7 @@
 	{
 		private readonly List<string> _palabras = new()
 {
-"arquitectura"
-,
-"interfaz"
-,
-"polimorfismo"
-,
-"encapsulamiento"
-,
-"herencia"
+	"arquitectura","interfaz","polimorfismo","encapsulamiento","herencia"
 };
 		public string ObtenerPalabraAleatoria()
 		{
