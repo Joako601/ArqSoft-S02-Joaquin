@@ -1,35 +1,34 @@
 ﻿var repositorio = new Ahorcado.PalabrasEnMemoria();
-var motor = new Ahorcado.MotorAhorcado(repositorio);
-var ui = new Ahorcado.ConsolaUI(motor);
+bool repetir;
 
-Console.WriteLine(" === AHORCADO === ");
-
-while (!motor.Ganado() && !motor.Perdido())
+do
 {
+	var motor = new Ahorcado.MotorAhorcado(repositorio);
+	var ui = new Ahorcado.ConsolaUI(motor);
 
-	ui.MostrarTablero();
-	char letra = ui.PedirLetra();
+	Console.WriteLine(" === AHORCADO === ");
 
-	if (motor.LetraYaUsada(letra))
-	{ 
-		ui.MostrarMensaje("Ya usaste esa letra.");
-	continue;
+	while (!motor.Ganado() && !motor.Perdido())
+	{
+		ui.MostrarTablero();
+		char letra = ui.PedirLetra();
 
+		if (motor.LetraYaUsada(letra))
+		{
+			ui.MostrarMensaje("Ya usaste esa letra.");
+			continue;
+		}
+
+		motor.RegistrarLetra(letra);
 	}
 
-	motor.RegistrarLetra(letra);
-}
+	ui.MostrarTablero();
 
-ui.MostrarTablero();
+	if (motor.Ganado())
+		ui.MostrarMensaje($"\n¡Ganaste! La palabra era: {motor.PalabraSecreta}");
+	else
+		ui.MostrarMensaje($"\nPerdiste. La palabra era: {motor.PalabraSecreta}");
 
-if (motor.Ganado())
-	ui.MostrarMensaje($"\njGanaste! La palabra era: {motor.PalabraSecreta}");
-else
-	ui.MostrarMensaje($"\nPerdiste. La palabra era: {motor.PalabraSecreta}");
+	repetir = ui.PreguntarOtraVez();
 
-if (ui.PreguntarOtraVez())
-{ 
-	var nuevoMotor = new Ahorcado.MotorAhorcado(repositorio);
-var nuevaUI = new Ahorcado.ConsolaUI(nuevoMotor);
-
-}
+} while (repetir);

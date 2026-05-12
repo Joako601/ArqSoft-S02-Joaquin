@@ -27,5 +27,12 @@
 			return true;
 		}
 		public bool Perdido() => _intentosRestantes <= 0;
+
+		public bool MostrarPista => IntentosRestantes <= 3;
+
+		public char ObtenerPrimeraLetra()
+		{
+			return PalabraSecreta[0];
+		}
 	}
 }
