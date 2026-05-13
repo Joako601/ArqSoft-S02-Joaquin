@@ -1,5 +1,10 @@
 ﻿var repositorio = new Ahorcado.PalabrasEnMemoria();
-bool repetir;
+var uiPrincipal = new Ahorcado.ConsolaUI(null);
+
+string catElegida = uiPrincipal.PedirCategoria();
+repositorio.SetCategoria(catElegida);
+
+bool repetir; 
 
 do
 {

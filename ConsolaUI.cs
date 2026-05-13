@@ -18,7 +18,7 @@
 
 			if (_motor.IntentosRestantes <= 3)
 			{
-				Console.WriteLine($"\n💡 PISTA: La palabra empieza con '{_motor.PalabraSecreta[0]}'");
+				Console.WriteLine($"\n PISTA: La palabra empieza con '{_motor.PalabraSecreta[0]}'");
 			}
 
 			Console.Write("\nPalabra: ");
@@ -39,7 +39,7 @@
 					return char.ToLower(entrada[0]);
 				}
 
-				Console.WriteLine("⚠️ No ingresaste nada. Por favor, escribe una letra.");
+				Console.WriteLine(" No ingresaste nada. Por favor, escribe una letra.");
 			}
 		}
 
@@ -69,6 +69,12 @@
 			if (indice > 6) indice = 6;
 
 			Console.WriteLine(etapas[indice]);
+		}
+
+		public string PedirCategoria()
+		{
+			Console.WriteLine("Seleccione categoría: Programacion / Hardware");
+			return Console.ReadLine();
 		}
 	}
 }
